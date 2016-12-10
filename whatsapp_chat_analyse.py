@@ -1,9 +1,12 @@
 import re
 import sys,time,datetime
+myname='Alex'   #change
+targetname='Bob'
+textfilepath='/Users/jbhv12/Downloads/ws.txt'
 non_bmp_map = dict.fromkeys(range(0x10000, sys.maxunicode + 1), 0xfffd)
 count=0
 tottime=[]
-lines = [line.rstrip('\n').translate(non_bmp_map) for line in open('/Users/jbhv12/Downloads/ws.txt', encoding='utf-8')]
+lines = [line.rstrip('\n').translate(non_bmp_map) for line in open(textfilepath, encoding='utf-8')]
 nlines=[]
 for line in lines:
     if(len(line)==0):continue
@@ -17,7 +20,7 @@ for line in lines:
 print(nlines)
 
 for i in range(len(nlines)):
-    if(nlines[i][1].split(':')[0][1:] == 'Cheny' and nlines[i-1][1].split(':')[0][1:]== 'Jay Bhavsar'):  #again should've used regex
+    if(nlines[i][1].split(':')[0][1:] == targetname and nlines[i-1][1].split(':')[0][1:]== myname):  #again should've used regex
         count+=1
         tottime.append((nlines[i][0]-nlines[i-1][0]))
         #print('blah')
